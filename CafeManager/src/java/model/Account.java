@@ -10,19 +10,11 @@ package model;
  * @author Admin
  */
 public class Account {
-    private int id;
-    private String displayName;
+
     private String username;
     private String password;
+    private String displayName;
     private int idType;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getDisplayName() {
         return displayName;
@@ -55,5 +47,5 @@ public class Account {
     public void setIdType(int idType) {
         this.idType = idType;
     }
-    
+
 }

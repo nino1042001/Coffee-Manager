@@ -22,7 +22,7 @@ public class TableDBContext extends DBContext {
     public ArrayList<Table> getTables() {
         ArrayList<Table> tables = new ArrayList<>();
         try {
-            String sql = "select * from [Table]";
+            String sql = "select id, name, status from [Table]";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){

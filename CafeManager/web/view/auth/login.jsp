@@ -73,18 +73,18 @@
                 width: 278px;
             }
 
-            .login p.remember_me {
+            .login p.type_account {
                 float: left;
                 line-height: 31px;
             }
 
-            .login p.remember_me label {
+            .login p.type_account label {
                 font-size: 12px;
                 color: #777;
                 cursor: pointer;
             }
 
-            .login p.remember_me input {
+            .login p.type_account input {
                 position: relative;
                 bottom: 1px;
                 margin-right: 4px;
@@ -172,10 +172,10 @@
             <form method="post" action="login">
                 <p><input type="text" name="username" placeholder="Username"></p>
                 <p><input type="password" name="password" placeholder="Password"></p>
-                <p class="remember_me">
+                <p class="type_account">
                     <label>
-                        <input type="radio" name="remember_me" id="remember_me"> Admin
-                        <input type="radio" name="remember_me" id="remember_me"> S
+                        <input type="radio" name="type" value="admin"> Admin
+                        <input type="radio" name="type" value="staff"> Staff
                     </label>
                 </p>
                 <p class="submit"><input type="submit" name="commit" value="Login"></p>
