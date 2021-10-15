@@ -9,9 +9,9 @@ package model;
  *
  * @author Admin
  */
-public class AccountType {
+public class Feature {
     private int id;
-    private String type;
+    private String url;
 
     public int getId() {
         return id;
@@ -21,12 +21,12 @@ public class AccountType {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getUrl() {
+        return url;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUrl(String url) {
+        this.url = url;
     }
     
 }

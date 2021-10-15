@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
@@ -14,7 +16,16 @@ public class Account {
     private String username;
     private String password;
     private String displayName;
-    private int idType;
+    
+    ArrayList<Feature> features = new ArrayList<>();
+
+    public ArrayList<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(ArrayList<Feature> features) {
+        this.features = features;
+    }
 
     public String getDisplayName() {
         return displayName;
@@ -38,14 +49,6 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getIdType() {
-        return idType;
-    }
-
-    public void setIdType(int idType) {
-        this.idType = idType;
     }
 
 }

@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Account;
+import model.Feature;
 
 /**
  *
@@ -21,7 +23,17 @@ public abstract class BasicRequiredAuthController extends HttpServlet {
 
     // Kiểm tra đã login chưa 
     private boolean isAuthenticated(HttpServletRequest request) {
-        return request.getSession().getAttribute("account") != null;
+        Account account = (Account) request.getSession().getAttribute("account");
+        if(account == null){
+            return false;
+        }
+        String currentURL = request.getServletPath();
+        for (Feature feature : account.getFeatures()) {
+            if(feature.getUrl().equals(currentURL)){
+                return true; // Được uỷ quyền truy cập currentURL
+            }
+        }
+        return false; // Không được uỷ quyền truy cập vô currentURL
     }
 
     // Ép cho chúng nó dùng processGet and processPost
