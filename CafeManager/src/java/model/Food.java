@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
@@ -14,7 +16,16 @@ public class Food {
     private String name;
     private float price;
     private int idCaregory;
+    ArrayList<FoodPrice> fps = new ArrayList<>();
 
+    public ArrayList<FoodPrice> getFps() {
+        return fps;
+    }
+
+    public void setFps(ArrayList<FoodPrice> fps) {
+        this.fps = fps;
+    }
+    
     public int getId() {
         return id;
     }

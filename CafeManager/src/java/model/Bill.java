@@ -16,7 +16,7 @@ public class Bill {
     private Date dateCheckIn;
     private Date dateCheckOut;
     private int idTable;
-    private String statusl;
+    private String status;
 
     public int getId() {
         return id;
@@ -50,12 +50,12 @@ public class Bill {
         this.idTable = idTable;
     }
 
-    public String getStatusl() {
-        return statusl;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatusl(String statusl) {
-        this.statusl = statusl;
+    public void setStatusl(String status) {
+        this.status = status;
     }
     
     

@@ -25,14 +25,34 @@ public class TableDBContext extends DBContext {
             String sql = "select id, name, status from [Table]";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Table t = new Table();
                 t.setId(rs.getInt("id"));
                 t.setName(rs.getString("name"));
                 t.setStatus(rs.getString("status"));
                 tables.add(t);
             }
-                
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TableDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tables;
+    }
+
+    public ArrayList<Table> getEmptyTables() {
+        ArrayList<Table> tables = new ArrayList<>();
+        try {
+            String sql = "select id, name, status from [Table]\n"
+                    + "where status = 'Empty'";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Table t = new Table();
+                t.setId(rs.getInt("id"));
+                t.setName(rs.getString("name"));
+                t.setStatus(rs.getString("status"));
+                tables.add(t);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TableDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }

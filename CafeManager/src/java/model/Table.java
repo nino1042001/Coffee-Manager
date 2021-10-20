@@ -13,6 +13,7 @@ public class Table {
     private int id;
     private String name;
     private String status;
+    private Bill b;
 
     public int getId() {
         return id;
@@ -37,6 +38,15 @@ public class Table {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Bill getB() {
+        return b;
+    }
+
+    public void setB(Bill b) {
+        this.b = b;
+    }
+    
     
     
 }

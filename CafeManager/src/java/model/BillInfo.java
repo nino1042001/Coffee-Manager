@@ -5,15 +5,27 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class BillInfo {
+
     private int id;
     private int idBill;
     private int idFood;
     private int quantity;
+    ArrayList<Food> foods = new ArrayList<>();
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(ArrayList<Food> foods) {
+        this.foods = foods;
+    }
 
     public int getId() {
         return id;
@@ -46,5 +58,5 @@ public class BillInfo {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
 }

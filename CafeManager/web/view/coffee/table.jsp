@@ -23,16 +23,32 @@
                 padding: 20px;
             }
 
-            .grid-container > div {
+            .grid-container .empty {
                 background-color: #33ffff;
                 text-align: center;
                 padding: 20px 0;
                 font-size: 30px;
             }
-            .grid-container > div:nth-child(5){
+
+            .grid-container .empty:hover, .grid-container .booked:hover{
+                cursor: pointer;
+            }
+
+            .grid-container .booked{
                 background-color: #ffb3d9;
+                text-align: center;
+                padding: 20px 0;
+                font-size: 30px;
             }
         </style>
+        <script>
+            function showBill(id) {
+                window.location.href = "showBill?id=" + id;
+            }
+            function showOrder(id) {
+                window.location.href = "order?id" + id;
+            }
+        </script>
     </head>
     <body>
 
@@ -40,13 +56,25 @@
 
         <div class="grid-container">
             <c:forEach items="${requestScope.tables}" var="t">
-                <div class="item${t.id}">
-                    <span>${t.name}</span>
-                    <p>${t.status}</p>
-                </div>
+                <c:set var="status" value="Empty"/>
+                <c:choose>
+                    <c:when test = "${t.status == status}">
+                        <div class="item${t.id} empty" onclick="showOrder(${t.id});">
+                            <span>${t.name}</span>
+                            <p>${t.status}</p>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <div class="item${t.id} booked" onclick="showBill(${t.id});">
+                            <span>${t.name}</span>
+                            <p>${t.status}</p>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </div>
-        
-        
+
+
     </body>
 </html>
