@@ -46,7 +46,7 @@
                 window.location.href = "showBill?id=" + id;
             }
             function showOrder(id) {
-                window.location.href = "order?id" + id;
+                window.location.href = "order?id=" + id;
             }
         </script>
     </head>

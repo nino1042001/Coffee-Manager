@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
@@ -12,6 +14,16 @@ package model;
 public class FoodCategory {
     private int id;
     private String name;
+    private ArrayList<Food> foods = new ArrayList<>();
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(ArrayList<Food> foods) {
+        this.foods = foods;
+    }
+    
 
     public int getId() {
         return id;

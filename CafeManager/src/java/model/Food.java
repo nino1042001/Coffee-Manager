@@ -14,9 +14,8 @@ import java.util.ArrayList;
 public class Food {
     private int id;
     private String name;
-    private float price;
-    private int idCaregory;
-    ArrayList<FoodPrice> fps = new ArrayList<>();
+    private FoodCategory fc;
+    private ArrayList<FoodPrice> fps = new ArrayList<>();
 
     public ArrayList<FoodPrice> getFps() {
         return fps;
@@ -42,21 +41,12 @@ public class Food {
         this.name = name;
     }
 
-    public float getPrice() {
-        return price;
+    public FoodCategory getFc() {
+        return fc;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setFc(FoodCategory fc) {
+        this.fc = fc;
     }
-
-    public int getIdCaregory() {
-        return idCaregory;
-    }
-
-    public void setIdCaregory(int idCaregory) {
-        this.idCaregory = idCaregory;
-    }
-    
-    
+ 
 }

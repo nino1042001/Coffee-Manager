@@ -5,25 +5,23 @@
  */
 package controller.coffee;
 
-import dal.FoodCategoryDBContext;
 import dal.FoodDBContext;
+import dal.SizeDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Food;
-import model.FoodCategory;
+import model.Size;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "OrderController", urlPatterns = {"/coffee/listByCategory"})
-public class ListFoodByCategoryController extends HttpServlet {
+public class CartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,23 +32,16 @@ public class ListFoodByCategoryController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String raw_idCategory = request.getParameter("fcid");
-        if (raw_idCategory == null || raw_idCategory.length() == 0) {
-            raw_idCategory = "-1";
-        }
-        int idCategory = Integer.parseInt(raw_idCategory);
+        int id = Integer.parseInt(request.getParameter("id"));
         FoodDBContext fDB = new FoodDBContext();
-        ArrayList<Food> foods = fDB.getFoods(idCategory);
-        request.setAttribute("foods", foods);
-        FoodCategoryDBContext fcDB = new FoodCategoryDBContext();
-        ArrayList<FoodCategory> fcs = fcDB.getFoodCategories();
-        request.setAttribute("fcs", fcs);
-        request.getRequestDispatcher("../view/coffee/listByCategory.jsp").forward(request, response);
+        Food food = fDB.getFoodByIDFood(id);
+        request.setAttribute("food", food);
+        request.getRequestDispatcher("../view/coffee/cart.jsp").forward(request, response);
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
