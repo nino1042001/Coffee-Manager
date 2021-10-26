@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>controller.coffee.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListFoodByCategoryController</servlet-name>
+        <servlet-class>controller.coffee.ListFoodByCategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListController</servlet-name>
+        <servlet-class>controller.coffee.ListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/coffee/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListFoodByCategoryController</servlet-name>
+        <url-pattern>/coffee/listByCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListController</servlet-name>
+        <url-pattern>/coffee/list</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
