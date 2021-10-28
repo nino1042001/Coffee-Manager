@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Table Controller</title>
+        <title>Table Page</title>
         <style>
             h1{
                 text-align: center;

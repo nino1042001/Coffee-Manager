@@ -6,16 +6,14 @@
 package controller.coffee;
 
 import dal.FoodDBContext;
-import dal.SizeDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Food;
-import model.Size;
+import javax.servlet.http.HttpSession;
+import model.CartDrink;
 
 /**
  *
@@ -23,58 +21,77 @@ import model.Size;
  */
 public class CartController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int fid = Integer.parseInt(request.getParameter("fid"));
-        FoodDBContext fDB = new FoodDBContext();
-        Food food = fDB.getFood(fid);
-        request.setAttribute("food", food);
-        request.getRequestDispatcher("../view/coffee/cart.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("action");
+        if (action != null && !action.equals("")) {
+            if (action.equals("Add Food")) {
+                addToCart(request);
+            } else if (action.equals("Update")) {
+                updateCart(request);
+            } else if (action.equals("Delete")) {
+                deleteCart(request);
+            }
+        }
+        response.sendRedirect("../view/coffee/cart.jsp");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    protected void addToCart(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String name = request.getParameter("drinkName");
+        String size = request.getParameter("size");
+        String price = "";
+        if (size.equals("M")) {
+            price = request.getParameter("priceSiezeM");
+        } if(size.equals("L")){
+            price = request.getParameter("priceSizeL");
+        }
+        String quantity = request.getParameter("quantity");
+
+        CartDrink cartDrink = null;
+        Object objCartDrink = session.getAttribute("cart");
+        if (objCartDrink != null) {
+            cartDrink = (CartDrink) objCartDrink;
+        } else {
+            cartDrink = new CartDrink();
+            session.setAttribute("cart", cartDrink);
+        }
+
+        cartDrink.addToCart(name, size, price, quantity);
+    }
+
+    protected void updateCart(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String quantity = request.getParameter("quantity");
+        String iNumber = request.getParameter("number");
+
+        CartDrink cartDrink = null;
+        Object objCartDrink = session.getAttribute("cart");
+        if (objCartDrink != null) {
+            cartDrink = (CartDrink) objCartDrink;
+        } else {
+            cartDrink = new CartDrink();
+        }
+
+        cartDrink.updateCart(iNumber, quantity);
+    }
+
+    protected void deleteCart(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String iNumber = request.getParameter("number");
+
+        CartDrink cartDrink = null;
+        Object objCartDrink = session.getAttribute("cart");
+        if (objCartDrink != null) {
+            cartDrink = (CartDrink) objCartDrink;
+        } else {
+            cartDrink = new CartDrink();
+        }
+
+        cartDrink.deleteCart(iNumber);
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Order Page</title>
+        <title>List Page</title>
         <style>
             h1{
                 text-align: center;
@@ -37,7 +37,7 @@
         </style>
         <script>
             function addToCart(id) {
-                window.location.href = "cart?fid=" + id;
+                window.location.href = "order?fid=" + id;
             }
         </script>
     </head>

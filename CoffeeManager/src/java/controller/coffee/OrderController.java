@@ -6,19 +6,22 @@
 package controller.coffee;
 
 import dal.FoodDBContext;
+import dal.SizeDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Food;
+import model.Size;
 
 /**
  *
  * @author Admin
  */
-public class ListController extends HttpServlet {
+public class OrderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,6 +32,15 @@ public class ListController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int fid = Integer.parseInt(request.getParameter("fid"));
+        FoodDBContext fDB = new FoodDBContext();
+        Food food = fDB.getFood(fid);
+        request.setAttribute("food", food);
+        request.getRequestDispatcher("../view/coffee/order.jsp").forward(request, response);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -41,10 +53,7 @@ public class ListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FoodDBContext fDB = new FoodDBContext();
-        Food food = fDB.getFood(Integer.parseInt(request.getParameter("id")));
-        request.setAttribute("food", food);
-        request.getRequestDispatcher("../view/coffee/list.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -58,15 +67,7 @@ public class ListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        request.setAttribute("quantity", quantity);
-        String size = request.getParameter("size");
-        request.setAttribute("size", size);
-        int price = Integer.parseInt(request.getParameter("price"));
-        request.setAttribute("price", price);
-        int priceSizeL = Integer.parseInt(request.getParameter("priceSizeL"));
-        request.setAttribute("priceSizeL", priceSizeL);
-        request.getRequestDispatcher("../view/coffee/list.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
