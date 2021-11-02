@@ -12,6 +12,10 @@
         <servlet-name>CartController</servlet-name>
         <servlet-class>controller.coffee.CartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateController</servlet-name>
+        <servlet-class>controller.coffee.UpdateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/coffee/order</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/coffee/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateController</servlet-name>
+        <url-pattern>/coffee/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

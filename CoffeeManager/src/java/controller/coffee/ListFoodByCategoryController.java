@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Food;
 import model.FoodCategory;
 
@@ -34,6 +35,12 @@ public class ListFoodByCategoryController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int tid;
+        if (session.getAttribute("tid") == null) {
+            tid = Integer.parseInt(request.getParameter("id"));
+            session.setAttribute("tid", tid);
+        } 
         FoodCategoryDBContext fcDB = new FoodCategoryDBContext();
         ArrayList<FoodCategory> fcs = fcDB.getFoodCategories();
         request.setAttribute("fcs", fcs);

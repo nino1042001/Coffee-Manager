@@ -14,7 +14,7 @@
     </head>
     <body>
         <form action="cart" method="POST">
-            Id: ${requestScope.food.id}<input type="hidden" name="id" value="${requestScope.food.id}"> <br/>
+            Id: ${requestScope.food.id}<input type="hidden" name="fid" value="${requestScope.food.id}"> <br/>
             Name: ${requestScope.food.name}<input type="hidden" name="drinkName" value="${requestScope.food.name}"><br/>
             Price:  
             <c:forEach items="${requestScope.food.fps}" var="fp">

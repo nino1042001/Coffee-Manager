@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,7 +18,16 @@ public class Bill {
     private Date dateCheckOut;
     private Table table;
     private String status;
+    private ArrayList<BillInfo> bills = new ArrayList<>();
 
+    public ArrayList<BillInfo> getBills() {
+        return bills;
+    }
+
+    public void setBills(ArrayList<BillInfo> bills) {
+        this.bills = bills;
+    }
+    
     public int getId() {
         return id;
     }
@@ -54,7 +64,7 @@ public class Bill {
         return status;
     }
 
-    public void setStatusl(String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     

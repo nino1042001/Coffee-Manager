@@ -5,13 +5,18 @@
  */
 package controller.coffee;
 
+import dal.TableDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.CartDrink;
+import model.Table;
 
 /**
  *
@@ -29,12 +34,6 @@ public class ShowBillController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -47,7 +46,16 @@ public class ShowBillController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        int tid;
+        if (session.getAttribute("tid") == null) {
+            tid = Integer.parseInt(request.getParameter("id"));
+            session.setAttribute("tid", tid);
+        }
+        TableDBContext tDB = new TableDBContext();
+        ArrayList<Table> emptyTables = tDB.getEmptyTables();
+        request.setAttribute("emptyTables", emptyTables);
+        request.getRequestDispatcher("../view/coffee/bill.jsp").forward(request, response);
     }
 
     /**
@@ -61,7 +69,8 @@ public class ShowBillController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String tid = request.getParameter("tid");
+
     }
 
     /**

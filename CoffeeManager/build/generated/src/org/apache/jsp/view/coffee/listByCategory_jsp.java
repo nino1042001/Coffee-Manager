@@ -66,7 +66,7 @@ public final class listByCategory_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Order Page</title>\n");
+      out.write("        <title>List Page</title>\n");
       out.write("        <style>\n");
       out.write("            h1{\n");
       out.write("                text-align: center;\n");
@@ -92,7 +92,7 @@ public final class listByCategory_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        </style>\n");
       out.write("        <script>\n");
       out.write("            function addToCart(id) {\n");
-      out.write("                window.location.href = \"cart?fid=\" + id;\n");
+      out.write("                window.location.href = \"order?fid=\" + id;\n");
       out.write("            }\n");
       out.write("        </script>\n");
       out.write("    </head>\n");

@@ -36,11 +36,13 @@ public class CartDrink {
         return carts.size();
     }
 
-    public void addToCart(String name, String size, String price, String quantity) {
+    public void addToCart(String id, String name, String size, String price, String quantity) {
+        int fid = Integer.parseInt(id);
         int iPrice = Integer.parseInt(price);
         int iQuantity = Integer.parseInt(quantity);
         CartItemDrink cartItem = new CartItemDrink();
         if (iQuantity > 0) {
+            cartItem.setId(fid);
             cartItem.setName(name);
             cartItem.setSize(size);
             cartItem.setPrice(iPrice);
@@ -70,7 +72,7 @@ public class CartDrink {
     }
     
     
-    protected void calculatorOrderTotal() {
+    public void calculatorOrderTotal() {
         int sum = 0;
         for (int i = 0; i < carts.size(); i++) {
             CartItemDrink cartItem = carts.get(i);
