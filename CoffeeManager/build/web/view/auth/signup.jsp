@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : Oct 13, 2021, 9:33:42 PM
+    Document   : signup
+    Created on : Nov 5, 2021, 9:34:40 PM
     Author     : Admin
 --%>
 
@@ -10,14 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="assets/css/login.css" rel="stylesheet" type="text/css"/>
-        <title>Login Page</title>
+        <title>Signup Page</title>
     </head>
-
-    
     <body>
         <div class="center">
-            <h1>Login</h1>
-            <form method="POST" action="login">
+            <h1>Register</h1>
+            <form method="POST" action="signup">
+                <div class="txt_field">
+                    <input type="text" required name="name">
+                    <span></span>
+                    <label>Name</label>
+                </div>
                 <div class="txt_field">
                     <input type="text" required name="username">
                     <span></span>
@@ -28,9 +31,9 @@
                     <span></span>
                     <label>Password</label>
                 </div>
-                <input type="submit" value="Login">
+                <input type="submit" value="Register">
                 <div class="signup_link">
-                    Not a member? <a href="signup">Signup</a>
+                    Have an account? <a href="login">Login</a>
                 </div>
             </form>
         </div>

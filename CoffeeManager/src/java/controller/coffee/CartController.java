@@ -8,6 +8,7 @@ package controller.coffee;
 import dal.FoodDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +47,6 @@ public class CartController extends HttpServlet {
 
     protected void addToCart(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String id = request.getParameter("fid");
         String name = request.getParameter("drinkName");
         String size = request.getParameter("size");
         String price = "";
@@ -76,7 +76,7 @@ public class CartController extends HttpServlet {
             session.setAttribute("cart", cartDrink);
         }
         if (!isExisted) {
-            cartDrink.addToCart(id, name, size, price, quantity);
+            cartDrink.addToCart(name, size, price, quantity);
         }
 
     }
@@ -110,6 +110,14 @@ public class CartController extends HttpServlet {
         }
 
         cartDrink.deleteCart(iNumber);
+    }
+
+    public void getCartByTableId(int id, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
+        HashMap<Integer, Object> map = new HashMap<>();
+        map.put(id, cartDrink);
+    
     }
 
     @Override

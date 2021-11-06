@@ -26,16 +26,20 @@
                 <td>Total Price</td>
             </tr>
 
-            <c:forEach var="cartItem" items="${cart.carts}" varStatus="counter">
-                <form method="POST" action="showBill">
-                    <tr>
-                        <td><c:out value="${cartItem.name}"/></td>
-                        <td><c:out value="${cartItem.size}"/></td>
-                        <td><c:out value="${cartItem.quantity}"/></td>
-                        <td>$<c:out value="${cartItem.price}"/></td>
-                        <td>$<c:out value="${cartItem.totalPrice}"/></td>
-                    </tr>
-                </form>
+            <c:forEach items="${map}" var="entry">
+                <c:if test="${entry.key == tid}">
+                    <c:forEach var="cartItem" items="${entry.value.carts}" varStatus="counter">
+                        <form method="POST" action="showBill">
+                            <tr>
+                                <td><c:out value="${cartItem.name}"/></td>
+                                <td><c:out value="${cartItem.size}"/></td>
+                                <td><c:out value="${cartItem.quantity}"/></td>
+                                <td>$<c:out value="${cartItem.price}"/></td>
+                                <td>$<c:out value="${cartItem.totalPrice}"/></td>
+                            </tr>
+                        </form>
+                    </c:forEach>
+                </c:if>
             </c:forEach>
             <!--Total-->
             <tr>

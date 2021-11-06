@@ -108,4 +108,67 @@ public class FoodDBContext extends DBContext {
         return null;
     }
 
+    public ArrayList<Food> getFoods(int pageindex, int pagesize) {
+        ArrayList<Food> foods = new ArrayList<>();
+        try {
+            String sql = "SELECT f.id, f.name, f.fcid, f.name as fcname, f.id as sid, f.size, f.price FROM \n"
+                    + "(SELECT ROW_NUMBER() OVER (ORDER BY f.id asc) as rownum, f.id, f.name, fc.fcid, fc.name as fcname, s.id as sid, s.size, fp.price from Food f\n"
+                    + "inner join FoodCategory fc on f.fcid = fc.fcid\n"
+                    + "left join FoodPrice fp on f.id = fp.foodid\n"
+                    + "left join Size s on fp.sizeid = s.id\n"
+                    + "where s.size = 'M') f\n"
+                    + "WHERE \n"
+                    + "rownum >= (? - 1)*? + 1 AND rownum <= ? * ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, pageindex);
+            stm.setInt(2, pagesize);
+            stm.setInt(3, pageindex);
+            stm.setInt(4, pagesize);
+            ResultSet rs = stm.executeQuery();
+            Food f = new Food();
+            f.setId(-1);
+            while (rs.next()) {
+                int fid = rs.getInt("id");
+                if (f.getId() != fid) {
+                    f = new Food();
+                    f.setId(fid);
+                    f.setName(rs.getString("name"));
+                    FoodCategory fc = new FoodCategory();
+                    fc.setId(rs.getInt("fcid"));
+                    fc.setName(rs.getString("fcname"));
+                    f.setFc(fc);
+                    foods.add(f);
+                }
+                int sid = rs.getInt("sid");
+                if (sid != 0) {
+                    FoodPrice fp = new FoodPrice();
+                    Size s = new Size();
+                    s.setId(sid);
+                    s.setSize(rs.getString("size"));
+                    fp.setFood(f);
+                    fp.setSize(s);
+                    fp.setPrice(rs.getInt("price"));
+                    f.getFps().add(fp);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return foods;
+    }
+
+    public int getRowCount() {
+        try {
+            String sql = "select COUNT(*) as Total from Food";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("Total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
 }

@@ -7,15 +7,13 @@ package controller.coffee;
 
 import dal.TableDBContext;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Bill;
+import model.CartDrink;
 import model.Table;
 
 /**
@@ -30,6 +28,7 @@ public class UpdateController extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null && action.length() != 0) {
             if (action.equals("Book")) {
+                putCartWithTableId(request);
                 updateTableWhenBooked(request);
             } else if (action.equals("Pay")) {
                 updateTableWhenPaid(request);
@@ -56,6 +55,15 @@ public class UpdateController extends HttpServlet {
         TableDBContext tDB = new TableDBContext();
         tDB.updateTableWhenPaid(t);
         session.removeAttribute("tid");
+    }
+    
+    protected void putCartWithTableId(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
+        HashMap<Integer, Object> map = new HashMap<>();
+        int id = Integer.parseInt(request.getParameter("id"));
+        map.put(id, cartDrink);
+        session.setAttribute("map", map);
     }
 
     @Override
