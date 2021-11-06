@@ -23,6 +23,15 @@ body{
     height: 100vh;
     overflow: hidden;
 }
+
+.text_fail{
+    text-align: center;
+    color: red;
+    position: relative;
+    top: 120px;
+    font-size: 2rem;
+}
+
 .center{
     position: absolute;
     top: 50%;
@@ -114,6 +123,5 @@ input[type="submit"]:hover{
 .signup_link a:hover{
     text-decoration: underline;
 }
-
 
 

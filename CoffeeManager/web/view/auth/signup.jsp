@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +19,7 @@
             <form method="POST" action="signup">
                 <div class="txt_field">
                     <input type="text" required name="name">
-                    <span></span>
+                    <span>Hello</span>
                     <label>Name</label>
                 </div>
                 <div class="txt_field">

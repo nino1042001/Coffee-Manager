@@ -13,7 +13,7 @@
         <title>Home Page</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="../assets/css/homepage.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/pagger.css" rel="stylesheet" type="text/css"/>
+        <script src="../assets/js/pagger.js" type="text/javascript"></script>
         <script>
             function loginUser() {
                 window.location.href = "../login";
@@ -99,9 +99,33 @@
                 </c:forEach>
             </div>
 
+            <div id="paggerbottom" class="pagger"></div>
+        </section>
+
+        <!-- footer section starts  -->
+
+        <section class="footer">
+
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-pinterest"></a>
+            </div>
+
+            <div class="links">
+                <a href="#">home</a>
+                <a href="#">about</a>
+                <a href="#">menu</a>
+                <a href="table">book</a>
+                <a href="table">Table Status</a>
+            </div>
+
+            <div class="credit">created by <span>Cương Trần</span> | all rights reserved</div>
 
         </section>
-        <div id="paggerbottom" class="pagger"></div>
+        <!-- footer section ends -->
         <script>
             generatePagger('paggerbottom', ${requestScope.pageindex}, ${requestScope.totalpage}, 2);
         </script>

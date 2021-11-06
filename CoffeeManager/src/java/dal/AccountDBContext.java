@@ -51,4 +51,25 @@ public class AccountDBContext extends DBContext {
         }
         return null;
     }
+
+    public void insert(Account a) {
+        try {
+            String sql = "INSERT INTO [dbo].[Account]\n"
+                    + "           ([username]\n"
+                    + "           ,[password]\n"
+                    + "           ,[displayname])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?\n"
+                    + "           ,?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, a.getUsername());
+            stm.setString(2, a.getPassword());
+            stm.setString(3, a.getDisplayName());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

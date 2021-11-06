@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,9 +13,8 @@
         <link href="assets/css/login.css" rel="stylesheet" type="text/css"/>
         <title>Login Page</title>
     </head>
-
-    
     <body>
+        <h2 class="text_fail">${requestScope.fail}</h2>
         <div class="center">
             <h1>Login</h1>
             <form method="POST" action="login">
