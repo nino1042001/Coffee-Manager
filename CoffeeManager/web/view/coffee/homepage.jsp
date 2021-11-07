@@ -14,11 +14,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="../assets/css/homepage.css" rel="stylesheet" type="text/css"/>
         <script src="../assets/js/pagger.js" type="text/javascript"></script>
-        <script>
-            function loginUser() {
-                window.location.href = "../login";
-            }
-        </script>
     </head
     <body>
         <header class="header">
@@ -36,7 +31,24 @@
             </nav>
 
             <div class="icons">
-                <div class="far fa-user-circle" id="user-btn" onclick="loginUser();"></div>
+                <div class="far fa-user-circle icon-user" id="user-btn"></div>
+
+                <c:choose>
+                    <c:when test = "${sessionScope.account ne null}">
+                        <ul class="dropdown-user-infor">
+                            <li><a class="dropdown-user-infor-link" href="infor.jsp">Account</a></li>
+                            <li><a class="dropdown-user-infor-link" href="../logout">Logout</a></li>
+                        </ul>
+                    </c:when>
+
+                    <c:when test = "${sessionScope.account eq null}">
+                        <ul class="dropdown-user">
+                            <li><a class="dropdown-user-link" href="../login">Login</a></li>
+                            <li><a class="dropdown-user-link" href="../signup">Signup</a></li>
+                        </ul>
+                    </c:when>
+                </c:choose>
+
             </div>
 
         </header>

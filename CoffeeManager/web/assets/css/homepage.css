@@ -119,6 +119,78 @@ section{
     color:#d3ad7f;
 }
 
+.dropdown-user{
+    list-style: none;
+    background-color: #999999;
+    width: 100px;
+    position: absolute;
+    top:60px;
+    right:35px;
+    border-radius: 2px;
+    display: none;
+}
+.dropdown-user:before{
+    content: "";
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: -6px;
+    right: 15px;
+}
+
+
+.icons:hover .dropdown-user{
+    display: block;
+}
+
+.dropdown-user-link{
+    padding: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+}
+
+.dropdown-user li:hover{
+    background-color: red;
+}
+
+.dropdown-user-infor{
+    list-style: none;
+    background-color: #999999;
+    width: 100px;
+    position: absolute;
+    top:60px;
+    right:35px;
+    border-radius: 2px;
+    display: none;
+}
+
+.dropdown-user-infor:before{
+    content: "";
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: -6px;
+    right: 15px;
+}
+
+.icons:hover .dropdown-user-infor{
+    display: block;
+}
+
+.dropdown-user-infor-link{
+    padding: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+}
+
+.dropdown-user-infor li:hover{
+    background-color: red;
+}
+
 #menu-btn{
     display: none;
 }
@@ -342,7 +414,7 @@ section{
     color: #fff;
     font-size: 2rem;
     margin-left: 30px;
-    
+
 }
 
 .pagger .target{

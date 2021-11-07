@@ -72,4 +72,24 @@ public class AccountDBContext extends DBContext {
         }
     }
 
+    public Account checkAccountExisted(String username) {
+        try {
+            String sql = "SELECT * FROM Account \n"
+                    + "WHERE username = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account account = new Account();
+                account.setUsername(username);
+                account.setPassword(rs.getString("password"));
+                account.setDisplayName(rs.getString("displayName"));
+                return account;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }

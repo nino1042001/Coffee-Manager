@@ -23,18 +23,17 @@ public abstract class BasicRequiredAuthController extends HttpServlet {
 
     // Kiểm tra đã login chưa 
     private boolean isAuthenticated(HttpServletRequest request) {
-//        Account account = (Account) request.getSession().getAttribute("account");
-//        if(account == null){
-//            return false;
-//        }
+        Account account = (Account) request.getSession().getAttribute("account");
+        if(account == null){
+            return false;
+        }
 //        String currentURL = request.getServletPath();
 //        for (Feature feature : account.getFeatures()) {
 //            if(feature.getUrl().equals(currentURL)){
 //                return true; // Được uỷ quyền truy cập currentURL
 //            }
 //        }
-//        return false; // Không được uỷ quyền truy cập vô currentURL
-        return true;
+        return false; // Không được uỷ quyền truy cập vô currentURL
     }
 
     // Ép cho chúng nó dùng processGet and processPost

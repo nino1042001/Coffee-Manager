@@ -63,7 +63,7 @@ public class LoginController extends HttpServlet {
         Account account = db.getAccount(username, password);
         if (account != null) {
             request.getSession().setAttribute("account", account);
-            response.getWriter().println("Login successfull!");
+            response.sendRedirect("coffee/home");
         } else {
             request.getSession().setAttribute("account", null);
             String fail = "Login Failed";

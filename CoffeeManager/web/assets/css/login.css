@@ -24,12 +24,30 @@ body{
     overflow: hidden;
 }
 
+
 .text_fail{
     text-align: center;
     color: red;
     position: relative;
     top: 120px;
     font-size: 2rem;
+}
+
+.text_existed{
+    text-align: center;
+    color: red;
+    position: relative;
+    top: 50px;
+    font-size: 2rem;
+}
+
+.text_confirm{
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    top: -20px;
+    left: 6px;
+    color: red;
 }
 
 .center{
@@ -42,6 +60,8 @@ body{
     border-radius: 10px;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
 }
+
+
 .center h1{
     text-align: center;
     padding: 20px 0;

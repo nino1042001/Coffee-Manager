@@ -14,24 +14,31 @@
         <title>Signup Page</title>
     </head>
     <body>
+        <h2 class="text_existed">${requestScope.isExisted}</h2>
         <div class="center">
             <h1>Register</h1>
             <form method="POST" action="signup">
                 <div class="txt_field">
                     <input type="text" required name="name">
-                    <span>Hello</span>
                     <label>Name</label>
+                    <span></span>
                 </div>
                 <div class="txt_field">
                     <input type="text" required name="username">
-                    <span></span>
                     <label>Username</label>
+                    <span></span>
                 </div>
                 <div class="txt_field">
                     <input type="password" required name="password">
-                    <span></span>
                     <label>Password</label>
+                    <span></span>
                 </div>
+                <div class="txt_field">
+                    <input type="password" required name="repassword">
+                    <label>Confirm Password</label>
+                    <span></span>
+                </div>
+                <span class="text_confirm">${requestScope.isConfirm}</span>
                 <input type="submit" value="Register">
                 <div class="signup_link">
                     Have an account? <a href="login">Login</a>
