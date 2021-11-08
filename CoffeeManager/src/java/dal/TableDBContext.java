@@ -170,4 +170,22 @@ public class TableDBContext extends DBContext {
             }
         }
     }
+
+    public void insert(Table t) {
+        try {
+            String sql = "INSERT INTO [dbo].[Table]\n"
+                    + "           ([name]\n"
+                    + "           ,[status])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, t.getName());
+            stm.setString(2, "Empty");
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }

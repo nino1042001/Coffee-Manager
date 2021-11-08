@@ -28,7 +28,6 @@ public class UpdateController extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null && action.length() != 0) {
             if (action.equals("Book")) {
-                putCartWithTableId(request);
                 updateTableWhenBooked(request);
             } else if (action.equals("Pay")) {
                 updateTableWhenPaid(request);
@@ -57,14 +56,14 @@ public class UpdateController extends HttpServlet {
         session.removeAttribute("tid");
     }
     
-    protected void putCartWithTableId(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
-        HashMap<Integer, Object> map = new HashMap<>();
-        int id = Integer.parseInt(request.getParameter("id"));
-        map.put(id, cartDrink);
-        session.setAttribute("map", map);
-    }
+//    protected void putCartWithTableId(HttpServletRequest request){
+//        HttpSession session = request.getSession();
+//        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
+//        HashMap<Integer, Object> map = new HashMap<>();
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        map.put(id, cartDrink);
+//        session.setAttribute("map", map);
+//    }
 
     @Override
     public String getServletInfo() {

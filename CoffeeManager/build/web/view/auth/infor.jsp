@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,7 @@
         <title>Personal Information Page</title>
     </head>
     <body>
-        
+        Name: ${sessionScope.account.displayName} <br/>
+        Account: ${sessionScope.account.username}
     </body>
 </html>

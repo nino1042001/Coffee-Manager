@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <filter>
-        <filter-name>myFilter</filter-name>
-        <filter-class>controller.filter.myFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>myFilter</filter-name>
-        <url-pattern>/auth/*</url-pattern>
-    </filter-mapping>
     <servlet>
         <servlet-name>OrderController</servlet-name>
         <servlet-class>controller.coffee.OrderController</servlet-class>
@@ -36,6 +28,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.coffee.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BillController</servlet-name>
+        <servlet-class>controller.coffee.BillController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/coffee/order</url-pattern>
@@ -63,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/coffee/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BillController</servlet-name>
+        <url-pattern>/coffee/bill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

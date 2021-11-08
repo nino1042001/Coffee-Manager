@@ -37,7 +37,7 @@
                         <td><c:out value="${cartItem.size}"/></td>
                         <td>
                             <input type="hidden" name="number" value="<c:out value="${counter.count}"/>"/>
-                            <input type="number" name="quantity" value="<c:out value="${cartItem.quantity}"/>"/> 
+                            <input type="number" name="quantity" value="<c:out value="${cartItem.quantity}"/>" min="1"/> 
                             <input type="submit" name="action" value="Update"/>
                             <input type="submit" name="action" value="Delete"/>
                         </td>
@@ -53,8 +53,8 @@
             </tr>
         </table>
         <a class="btn btn-primary mt-3" href="/CoffeeManager/coffee/listByCategory?id=${tid}">Add More</a>
+        <br/>
         <form method="POST" action="update">
-            <br/>
             <input type="submit" name="action" value="Book"/>
         </form>
     </center>

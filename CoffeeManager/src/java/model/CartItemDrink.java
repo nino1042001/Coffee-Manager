@@ -12,11 +12,20 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class CartItemDrink {
+    private int fid;
     private String name;
     private String size;
     private int price;
     private int quantity;
     private int totalPrice;
+
+    public int getFid() {
+        return fid;
+    }
+
+    public void setFid(int fid) {
+        this.fid = fid;
+    }
 
     public String getName() {
         return name;

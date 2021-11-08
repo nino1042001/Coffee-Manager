@@ -27,12 +27,12 @@ public abstract class BasicRequiredAuthController extends HttpServlet {
         if(account == null){
             return false;
         }
-//        String currentURL = request.getServletPath();
-//        for (Feature feature : account.getFeatures()) {
-//            if(feature.getUrl().equals(currentURL)){
-//                return true; // Được uỷ quyền truy cập currentURL
-//            }
-//        }
+        String currentURL = request.getServletPath();
+        for (Feature feature : account.getFeatures()) {
+            if(feature.getUrl().equals(currentURL)){
+                return true; // Được uỷ quyền truy cập currentURL
+            }
+        }
         return false; // Không được uỷ quyền truy cập vô currentURL
     }
 

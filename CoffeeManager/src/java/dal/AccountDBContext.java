@@ -37,6 +37,7 @@ public class AccountDBContext extends DBContext {
                     account = new Account();
                     account.setUsername(username);
                     account.setPassword(password);
+                    account.setDisplayName(rs.getString("displayname"));
                 }
                 int fid = rs.getInt("fid");
                 if (fid != 0) {

@@ -64,11 +64,11 @@ public class CartController extends HttpServlet {
             cartDrink = (CartDrink) objCartDrink;
             for (CartItemDrink cart : cartDrink.getCarts()) {
                 if (cart.getName().equals(name)) {
-                    int quantityFood = cart.getQuantity() + Integer.parseInt(quantity);
-                    cart.setQuantity(quantityFood);
-                    cart.setTotalPrice(cart.getPrice() * quantityFood);
+                    cart.setQuantity(cart.getQuantity() + Integer.parseInt(quantity));
+                    cart.setTotalPrice(cart.getPrice() * (cart.getQuantity() + Integer.parseInt(quantity)));
                     cartDrink.calculatorOrderTotal();
                     isExisted = true;
+                    break;
                 }
             }
         } else {
@@ -111,14 +111,14 @@ public class CartController extends HttpServlet {
 
         cartDrink.deleteCart(iNumber);
     }
-
-    public void getCartByTableId(int id, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
-        HashMap<Integer, Object> map = new HashMap<>();
-        map.put(id, cartDrink);
-    
-    }
+//
+//    public void getCartByTableId(int id, HttpServletRequest request) {
+//        HttpSession session = request.getSession();
+//        CartDrink cartDrink = (CartDrink) session.getAttribute("cart");
+//        HashMap<Integer, Object> map = new HashMap<>();
+//        map.put(id, cartDrink);
+//    
+//    }
 
     @Override
     public String getServletInfo() {

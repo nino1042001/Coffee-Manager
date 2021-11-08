@@ -15,6 +15,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,7 +25,8 @@ import model.Account;
  *
  * @author Admin
  */
-public class myFilter implements Filter {
+@WebFilter(filterName = "filterCoffee", urlPatterns = {"/coffee/cart", "/coffee/cart", "/coffee/listByCategory", "/coffee/order", "/coffee/showBill", "/coffee/table", "/coffee/update"})
+public class filterCoffee implements Filter {
 
     private static final boolean debug = true;
 
@@ -33,13 +35,13 @@ public class myFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public myFilter() {
+    public filterCoffee() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("myFilter:DoBeforeProcessing");
+            log("filterCoffee:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -67,7 +69,7 @@ public class myFilter implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("myFilter:DoAfterProcessing");
+            log("filterCoffee:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -103,7 +105,7 @@ public class myFilter implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("myFilter:doFilter()");
+            log("filterCoffee:doFilter()");
         }
 
         doBeforeProcessing(request, response);
@@ -116,7 +118,6 @@ public class myFilter implements Filter {
         } else {
             chain.doFilter(request, response);
         }
-
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -172,7 +173,7 @@ public class myFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("myFilter:Initializing filter");
+                log("filterCoffee:Initializing filter");
             }
         }
     }
@@ -183,9 +184,9 @@ public class myFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("myFilter()");
+            return ("filterCoffee()");
         }
-        StringBuffer sb = new StringBuffer("myFilter(");
+        StringBuffer sb = new StringBuffer("filterCoffee(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

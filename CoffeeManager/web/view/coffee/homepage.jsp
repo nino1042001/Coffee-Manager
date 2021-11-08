@@ -36,7 +36,7 @@
                 <c:choose>
                     <c:when test = "${sessionScope.account ne null}">
                         <ul class="dropdown-user-infor">
-                            <li><a class="dropdown-user-infor-link" href="infor.jsp">Account</a></li>
+                            <li><a class="dropdown-user-infor-link" href="../view/auth/infor.jsp">Account</a></li>
                             <li><a class="dropdown-user-infor-link" href="../logout">Logout</a></li>
                         </ul>
                     </c:when>
