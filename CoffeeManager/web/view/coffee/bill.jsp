@@ -25,16 +25,19 @@
                 <td>Unit Price</td>
                 <td>Total Price</td>
             </tr>
+            <jsp:useBean id="cart" scope="session" class="model.CartDrink" />
+            <c:forEach var="cartItem" items="${cart.carts}" varStatus="counter">
+                <form method="POST" action="showBill">
+                    <tr>
+                        <td><c:out value="${cartItem.name}"/></td>
+                        <td><c:out value="${cartItem.size}"/></td>
+                        <td><c:out value="${cartItem.quantity}"/></td>
+                        <td>$<c:out value="${cartItem.price}"/></td>
+                        <td>$<c:out value="${cartItem.totalPrice}"/></td>
+                    </tr>
+                </form>
+            </c:forEach>
 
-            <form method="POST" action="showBill">
-                <tr>
-                    <td><c:out value="${cartItem.name}"/></td>
-                    <td><c:out value="${cartItem.size}"/></td>
-                    <td><c:out value="${cartItem.quantity}"/></td>
-                    <td>$<c:out value="${cartItem.price}"/></td>
-                    <td>$<c:out value="${cartItem.totalPrice}"/></td>
-                </tr>
-            </form>
             <!--Total-->
             <tr>
                 <td colspan="4"> </td>

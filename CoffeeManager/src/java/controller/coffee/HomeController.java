@@ -6,6 +6,7 @@
 package controller.coffee;
 
 import controller.auth.BasicRequiredAuthController;
+import dal.FoodCategoryDBContext;
 import dal.FoodDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
 import model.Food;
+import model.FoodCategory;
 
 /**
  *
@@ -36,20 +38,26 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FoodDBContext db = new FoodDBContext();
+        FoodCategoryDBContext dbFC = new FoodCategoryDBContext();
         int pagesize = 8;
         String raw_page = request.getParameter("page");
         if (raw_page == null || raw_page.length() == 0) {
             raw_page = "1";
         }
+
         int pageindex = Integer.parseInt(raw_page);
         int totalRows = db.getRowCount();
         int totalpage = (totalRows % pagesize == 0) ? totalRows / pagesize : (totalRows / pagesize) + 1;
+
         ArrayList<Food> foods = db.getFoods(pageindex, pagesize);
+        ArrayList<FoodCategory> categories = dbFC.getFoodCategories();
+        
         request.setAttribute("foods", foods);
+        request.setAttribute("categories", categories);
         request.setAttribute("pageindex", pageindex);
         request.setAttribute("totalpage", totalpage);
 
-        request.getRequestDispatcher("/view/coffee/homepage.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/coffee/home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

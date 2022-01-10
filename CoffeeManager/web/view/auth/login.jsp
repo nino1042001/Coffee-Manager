@@ -1,6 +1,6 @@
 <%-- 
     Document   : login
-    Created on : Oct 13, 2021, 9:33:42 PM
+    Created on : Dec 30, 2021, 8:53:51 PM
     Author     : Admin
 --%>
 
@@ -10,28 +10,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="assets/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/loginform.css" rel="stylesheet" type="text/css"/>
         <title>Login Page</title>
     </head>
     <body>
-        <h2 class="text_fail">${requestScope.fail}</h2>
-        <div class="center">
-            <h1>Login</h1>
-            <form method="POST" action="login">
-                <div class="txt_field">
-                    <input type="text" required name="username">
-                    <span></span>
-                    <label>Username</label>
-                </div>
-                <div class="txt_field">
-                    <input type="password" required name="password">
-                    <span></span>
-                    <label>Password</label>
-                </div>
-                <input type="submit" value="Login">
-                <div class="signup_link">
-                    Not a member? <a href="signup">Signup</a>
-                </div>
+        <div class="register">
+            <form action="login" class="login-form" method="POST">
+                <h3>login now</h3>
+                <span>${requestScope.fail}</span>
+                <input type="text" name="username" required placeholder="your username" class="box" />
+                <input type="password" name="password" required placeholder="your password" class="box" />
+                <p>don't have an account <a href="signup">register now</a></p>
+                <input type="submit" value="login now" class="btn" />
             </form>
         </div>
     </body>

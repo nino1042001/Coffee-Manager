@@ -66,7 +66,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("coffee/home");
         } else {
             request.getSession().setAttribute("account", null);
-            String fail = "Login Failed";
+            String fail = "Login Failed! Incorrect Account or Password";
             request.setAttribute("fail", fail);
             request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
         }

@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 24, 2021, 10:23:02 PM
+    Author     : Admin
+*/
+body{
+    background: #eee;
+}
+
+.register{
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+.login-form {
+    width: 35rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    text-align: center;
+}
+.login-form.active {
+    right: 2rem;
+    transition: 0.4s linear;
+}
+
+.login-form h3 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #130f40;
+}
+
+.login-form span{
+    color: red;
+    font-size: 1.6rem;
+    display: block;
+}
+
+.login-form .box {
+    width: 90%;
+    margin: 0.7rem 0;
+    background: #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: #130f40;
+    text-transform: none;
+}
+
+.login-form p {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+    color: #666;
+    text-transform: capitalize;
+}
+.login-form p a {
+    color: #ff7800;
+    text-decoration: underline;
+}
+
+
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #130f40;
+    color: #130f40;
+    cursor: pointer;
+    background: none;
+    text-transform: capitalize;
+}
+
+.btn:hover {
+    background: #ff7800;
+    color: #fff;
+}
