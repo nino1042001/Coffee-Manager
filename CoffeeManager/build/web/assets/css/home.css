@@ -92,6 +92,7 @@ section {
     padding: 2rem 9%;
     background: #fff;
     box-shadow: var(--box-shadow);
+    height: 85px;
 }
 
 .header .logo {
@@ -294,7 +295,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../image/banner-bg.webp) no-repeat;
+    background: url(../img/banner-home.jpg) no-repeat;
     background-position: center;
     background-size: cover;
     padding-top: 17rem;

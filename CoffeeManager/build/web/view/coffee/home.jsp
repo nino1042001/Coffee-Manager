@@ -39,7 +39,8 @@
                 <a href="#products">products</a>
                 <a href="#categories">categories</a>
                 <a href="#review">review</a>
-                <a href="#blogs">blogs</a>
+                <a href="#blogs">blogs</a> 
+                <a href="#">Booking</a>
             </nav>
 
             <div class="icons">
